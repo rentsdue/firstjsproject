@@ -1,7 +1,5 @@
-console.log("Hello World!");
-
-var num1 = 0;
-var num2 = 3;
+let num1 = 0;
+let num2 = 3;
 
 if (num1 < num2) {
     console.log("Yes!");
@@ -16,6 +14,8 @@ function testFunction(number) {
         return true;
     }
 }
+
+//This is a comment
 
 var testFunctionBoolean = testFunction(5);
 
