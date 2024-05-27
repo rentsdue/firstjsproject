@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            color: blue; /* Set the title color to blue */
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 10px 0 40px;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        fieldset {
+            margin: 20px 0;
+            border: none;
+        }
+
+        legend {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script defer src="script.js"></script> <!-- Link to JavaScript file -->
+</head>
+<body>
+    <header>
+        <h1 id="title">Survey Form</h1>
+        <p id="description">Welcome to my website's survey! Please fill out the survey form below so that I can further improve the site, and thanks a lot for your time. Cheers!</p>
+    </header>
+    
+    <main>
+        <form id="survey-form">
+            <!-- Name field -->
+            <label id="name-label" for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            
+            <!-- Email field -->
+            <label id="email-label" for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            
+            <!-- Number field -->
+            <label id="number-label" for="number">Age:</label>
+            <input type="number" id="number" name="number" min="18" max="100" placeholder="Enter your age" required>
+            
+            <!-- Dropdown field -->
+            <label for="dropdown">Role:</label>
+            <select id="dropdown" name="role" required>
+                <option value="" disabled selected>Select your role</option>
+                <option value="student">Student</option>
+                <option value="professional">Professional</option>
+                <option value="freelancer">Freelancer</option>
+                <option value="entrepreneur">Entrepreneur</option>
+                <option value="intern">Intern</option>
+                <option value="researcher">Researcher</option>
+                <option value="teacher">Teacher</option>
+                <option value="developer">Developer</option>
+                <option value="designer">Designer</option>
+                <option value="manager">Manager</option>
+                <option value="consultant">Consultant</option>
+                <option value="administrator">Administrator</option>
+                <option value="analyst">Analyst</option>
+                <option value="marketer">Marketer</option>
+                <option value="other">Other</option>
+            </select>
+            
+            <!-- Radio buttons group -->
+            <fieldset>
+                <legend>Would you recommend this website to someone else?</legend>
+                <label>
+                    <input type="radio" name="recommend" value="yes" required> Yes
+                </label>
+                <label>
+                    <input type="radio" name="recommend" value="no" required> No
+                </label>
+            </fieldset>
+            
+            <!-- Checkboxes group -->
+            <fieldset>
+                <legend>What are your favorite features?</legend>
+                <label>
+                    <input type="checkbox" name="feature" value="design"> Design
+                </label>
+                <label>
+                    <input type="checkbox" name="feature" value="usability"> Usability
+                </label>
+                <label>
+                    <input type="checkbox" name="feature" value="performance"> Performance
+                </label>
+            </fieldset>
+            
+            <!-- Satisfaction rating -->
+            <fieldset>
+                <legend>How satisfied are you with the survey?</legend>
+                <label>
+                    <input type="radio" name="satisfaction" value="1" required> 1
+                </label>
+                <label>
+                    <input type="radio" name="satisfaction" value="2" required> 2
+                </label>
+                <label>
+                    <input type="radio" name="satisfaction" value="3" required> 3
+                </label>
+                <label>
+                    <input type="radio" name="satisfaction" value="4" required> 4
+                </label>
+                <label>
+                    <input type="radio" name="satisfaction" value="5" required> 5
+                </label>
+            </fieldset>
+            
+           <!-- Questions about improving the website -->
+           <fieldset>
+            <legend>How can we improve the website?</legend>
+            <label for="layout">Layout:</label>
+            <textarea id="layout" name="layout" rows="2" placeholder="Suggestions for improving the layout"></textarea>
+            
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" rows="2" placeholder="Suggestions for improving the content"></textarea>
+            
+            <label for="navigation">Navigation:</label>
+            <textarea id="navigation" name="navigation" rows="2" placeholder="Suggestions for improving the navigation"></textarea>
+
+            <label for="comments">Additional Comments:</label>
+         <textarea id="improvements" name="improvements" rows="4" placeholder="Enter your suggestions here (min 10 words, max 200 words)" required></textarea>
+        </fieldset>
+        
+        <!-- Submit button -->
+        <button id="submit" type="submit">Submit</button>
+    </form>
+</main>
+</body>
+</html>
+
