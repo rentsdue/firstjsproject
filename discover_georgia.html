@@ -21,8 +21,8 @@
             z-index: 1000;
         }
         #header-img {
-            width: 100%;
-            height: auto;
+            width: 10%;
+            height: 10%;
         }
         #nav-bar {
             display: flex;
@@ -38,8 +38,21 @@
         #nav-bar a:hover {
             background-color: #575757;
         }
+        #homeButton {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #feac32;
+            color: #0a0a23;
+            padding: 5px 10px; /* Adjusted padding to make the button smaller */
+            border: 2px solid #feac32; /* Adjusted border width */
+            cursor: pointer;
+            font-size: 0.9em; /* Adjusted font size to make the button smaller */
+            width: auto; /* Allow button width to be determined by its content */
+            z-index: 1001; /* Ensure the button is above the header */
+        }
         main {
-            margin-top: 160px; /* Ensure content starts below the fixed header */
+            margin-top: 150px; /* Increased top margin to ensure content starts below the fixed header and nav-bar */
             padding: 20px;
         }
         section {
@@ -53,8 +66,9 @@
     </style>
 </head>
 <body>
+    <button id="homeButton" onclick="window.location.href='index.html'">Home</button>
     <header id="header">
-        <img id="header-img" src="https://example.com/georgia-header.jpg" alt="Beautiful Landscape of Georgia">
+        <img id="header-img" src="https://img.thedailybeast.com/image/upload/c_crop,d_placeholder_euli9k,h_1440,w_2560,x_0,y_0/dpr_1.5/c_limit,w_1044/fl_lossy,q_auto/v1533067382/180731-Kemper-georgia-tease_t2aktf" alt="Beautiful Landscape of Georgia">
         <nav id="nav-bar">
             <a class="nav-link" href="#culture">Culture</a>
             <a class="nav-link" href="#tourism">Tourism</a>
@@ -71,7 +85,7 @@
         <section id="tourism">
             <h2>Tourism</h2>
             <p>Georgia offers a diverse range of attractions for tourists, from the bustling capital city of Tbilisi to the picturesque mountain villages in the Caucasus. Visitors can explore ancient churches, monasteries, and fortresses, as well as enjoy outdoor activities like hiking, skiing, and wine tasting in the Kakheti region. The country's natural beauty and hospitality make it a must-visit destination. Tbilisi, with its charming old town, sulfur baths, and vibrant nightlife, is a blend of the ancient and modern. The stunning landscapes of the Svaneti region, with its medieval towers and remote villages, offer a glimpse into Georgia's storied past. Adventure seekers can enjoy trekking routes in the Greater Caucasus, while winter sports enthusiasts can head to Gudauri and Bakuriani for skiing and snowboarding. Georgia's Black Sea coast, particularly the city of Batumi, offers a subtropical escape with beaches, botanical gardens, and casinos.</p>
-            <iframe id="video" src="https://www.youtube.com/embed/fXXYEFvHlwE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe id="video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </section>
         
         <section id="cuisine">

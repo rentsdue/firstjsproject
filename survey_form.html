@@ -97,10 +97,24 @@
         button:hover {
             background-color: #45a049;
         }
+
+        #homeButton {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #feac32;
+            color: #0a0a23;
+            padding: 5px 10px; /* Adjusted padding to make the button smaller */
+            border: 2px solid #feac32; /* Adjusted border width */
+            cursor: pointer;
+            font-size: 0.9em; /* Adjusted font size to make the button smaller */
+            width: auto; /* Allow button width to be determined by its content */
+        }
     </style>
     <script defer src="script.js"></script> <!-- Link to JavaScript file -->
 </head>
 <body>
+    <button id="homeButton" onclick="window.location.href='index.html'">Home</button>
     <header>
         <h1 id="title">Survey Form</h1>
         <p id="description">Welcome to my website's survey! Please fill out the survey form below so that I can further improve the site, and thanks a lot for your time. Cheers!</p>
@@ -186,26 +200,63 @@
                 </label>
             </fieldset>
             
-           <!-- Questions about improving the website -->
-           <fieldset>
-            <legend>How can we improve the website?</legend>
-            <label for="layout">Layout:</label>
-            <textarea id="layout" name="layout" rows="2" placeholder="Suggestions for improving the layout"></textarea>
+            <!-- Questions about improving the website -->
+            <fieldset>
+                <legend>How can we improve the website?</legend>
+                <label for="layout">Layout:</label>
+                <textarea id="layout" name="layout" rows="2" placeholder="Suggestions for improving the layout"></textarea>
+                
+                <label for="content">Content:</label>
+                <textarea id="content" name="content" rows="2" placeholder="Suggestions for improving the content"></textarea>
+                
+                <label for="navigation">Navigation:</label>
+                <textarea id="navigation" name="navigation" rows="2" placeholder="Suggestions for improving the navigation"></textarea>
+                
+                <label for="comments">Additional Comments:</label>
+                <textarea id="improvements" name="improvements" rows="4" placeholder="Enter your suggestions here (min 10 words, max 200 words)" required></textarea>
+            </fieldset>
             
-            <label for="content">Content:</label>
-            <textarea id="content" name="content" rows="2" placeholder="Suggestions for improving the content"></textarea>
-            
-            <label for="navigation">Navigation:</label>
-            <textarea id="navigation" name="navigation" rows="2" placeholder="Suggestions for improving the navigation"></textarea>
+            <!-- Submit button -->
+            <button id="submit" type="submit">Submit</button>
+        </form>
+    </main>
+    <script>
+        // Function to convert form data to CSV format
+        function convertToCSV(data) {
+            const header = Object.keys(data[0]).join(',') + '\n';
+            const rows = data.map(entry => Object.values(entry).join(',')).join('\n');
+            return header + rows;
+        }
 
-            <label for="comments">Additional Comments:</label>
-         <textarea id="improvements" name="improvements" rows="4" placeholder="Enter your suggestions here (min 10 words, max 200 words)" required></textarea>
-        </fieldset>
-        
-        <!-- Submit button -->
-        <button id="submit" type="submit">Submit</button>
-    </form>
-</main>
+        // Function to save CSV data to a file
+        function saveToCSVFile(csv) {
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('href', url);
+            a.setAttribute('download', 'results.csv');
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        document.getElementById('survey-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form data
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            // Convert data to CSV format
+            const csv = convertToCSV([data]);
+
+            // Save CSV data to file
+            saveToCSVFile(csv);
+        });
+    </script>
 </body>
 </html>
-

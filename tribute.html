@@ -13,6 +13,19 @@
             padding: 0;
         }
 
+        #homeButton {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #feac32;
+            color: #0a0a23;
+            padding: 5px 10px; /* Adjusted padding to make the button smaller */
+            border: 2px solid #feac32; /* Adjusted border width */
+            cursor: pointer;
+            font-size: 0.9em; /* Adjusted font size to make the button smaller */
+            width: auto; /* Allow button width to be determined by its content */
+        }
+
         main {
             max-width: 800px;
             margin: 50px auto;
@@ -67,6 +80,7 @@
     </style>
 </head>
 <body>
+    <button id="homeButton" onclick="window.location.href='index.html'">Home</button>
     <main id="main">
         <!-- Title of the tribute page -->
         <h1 id="title">Hideki Tojo</h1>
