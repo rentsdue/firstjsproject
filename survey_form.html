@@ -220,43 +220,57 @@
             <button id="submit" type="submit">Submit</button>
         </form>
     </main>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script>
-        // Function to convert form data to CSV format
-        function convertToCSV(data) {
-            const header = Object.keys(data[0]).join(',') + '\n';
-            const rows = data.map(entry => Object.values(entry).join(',')).join('\n');
-            return header + rows;
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            databaseURL: "YOUR_DATABASE_URL",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID",
+            measurementId: "YOUR_MEASUREMENT_ID"
+        };
+    
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    
+        // Get a reference to the Firebase database service
+        const database = firebase.database();
+    
+        // Function to save survey data to Firebase Realtime Database
+        function saveToFirebase(data) {
+            // Get a reference to the "surveys" node in the database
+            const surveysRef = database.ref('surveys');
+    
+            // Push the survey data to the database
+            surveysRef.push(data)
+                .then(() => {
+                    console.log("Survey data saved successfully!");
+                    alert("Submission successful!");
+                })
+                .catch((error) => {
+                    console.error("Error saving survey data:", error);
+                    alert("Error: Survey data could not be saved.");
+                });
         }
-
-        // Function to save CSV data to a file
-        function saveToCSVFile(csv) {
-            const blob = new Blob([csv], { type: 'text/csv' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.setAttribute('href', url);
-            a.setAttribute('download', 'results.csv');
-            a.style.display = 'none';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
-
+    
         document.getElementById('survey-form').addEventListener('submit', function (event) {
             event.preventDefault(); // Prevent form submission
-
+    
             // Get form data
             const formData = new FormData(this);
             const data = {};
             formData.forEach((value, key) => {
                 data[key] = value;
             });
-
-            // Convert data to CSV format
-            const csv = convertToCSV([data]);
-
-            // Save CSV data to file
-            saveToCSVFile(csv);
+    
+            // Save survey data to Firebase
+            saveToFirebase(data);
         });
     </script>
+    
 </body>
 </html>
