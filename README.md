@@ -1,6 +1,8 @@
 # Overview and Documentation of my first HTML/Javascript project
 **0. Pyramid Generator**
 
+**EDIT: Projects 1 and 5 have been moved to the [Kwantum Institute site] (https://kwantum-institute.github.io/kwantum-institute/). Hence, they have been deleted from this repository and website).**
+
 This section of code (pyramid.js) generates a pyramid on the command line using various coding elements such as for loops, while loops, and functions. It's a rather minor portion of the entire project so I decided to give it "number 0" like how arrays in programming assign the first element in a array to the number 0. It's quite appropriate in this context.
 
 **1. RPG Game: Dragon Repeller**
